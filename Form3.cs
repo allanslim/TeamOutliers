@@ -12,8 +12,11 @@ namespace TeamOutliers
 {
     public partial class Form3 : Form
     {
-        public Form3()
+       private Form previousForm;
+
+        public Form3(Form form)
         {
+            previousForm = form;
             InitializeComponent();
         }
 

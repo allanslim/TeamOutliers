@@ -13,17 +13,22 @@ namespace TeamOutliers
 
     public partial class Form2 : Form
     {
-        public Form2()
+
+       private Form previousForm;
+       private Form nextForm;
+    
+       public Form2(Form form)
         {
-            InitializeComponent();
+           previousForm = form;
+           nextForm = new Form3(this);
+           InitializeComponent();
 
         }
 
         private void nextButton_Click(object sender, EventArgs e)
         {
-            this.Close();
-            Form3 f3 = new Form3();
-            f3.Show();
+           this.Hide();
+           nextForm.Show();
         }
 
         private void addRemoveMedicationOrSupplement_Click(object sender, EventArgs e)
@@ -36,9 +41,11 @@ namespace TeamOutliers
               case "addMedicationButton":
                  addMedication(medicationTextBox.Text, medicationDosageTextBox.Text, medicationListView);
                  break;
+              
               case "addNutritionButton":
                  addMedication(supplementTextBox.Text, supplementDosage.Text, supplementListView);
                  break;
+         
               case "removeMedicationButton":
                  medicationListView.Items.Cast<ListViewItem>().
               Where(T => T.Selected).
@@ -78,6 +85,22 @@ namespace TeamOutliers
         private bool medicationOrSupplementExistInTheList(ListView listView, String value)
         {
            return listView.FindItemWithText(value) != null;
+        }
+
+        private void previousButton_Click(object sender, EventArgs e)
+        {
+           returnToPreviousPage();
+        }
+
+        private void page1_Click(object sender, EventArgs e)
+        {
+           returnToPreviousPage();
+        }
+
+        private void returnToPreviousPage()
+        {
+           previousForm.Show();
+           this.Hide();
         }
 
 

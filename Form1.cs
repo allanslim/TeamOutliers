@@ -16,8 +16,12 @@ namespace TeamOutliers
         string dateOfBirth;
         string socialSecurityNumber;
 
+        Form2 form2;
+
         public Form1()
         {
+           form2 = new Form2(this);
+           form2.Hide();
             InitializeComponent();
         }
 
@@ -62,8 +66,8 @@ namespace TeamOutliers
         private void nextButton_Click(object sender, EventArgs e)
         {
             //MessageBox.Show(socialSecurityNumber);
-            Form2 f2 = new Form2();
-            f2.Show();
+           this.Hide();
+           form2.Show();
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
