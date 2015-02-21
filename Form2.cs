@@ -22,5 +22,12 @@ namespace TeamOutliers
             Form3 f3 = new Form3();
             f3.Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        
     }
 }

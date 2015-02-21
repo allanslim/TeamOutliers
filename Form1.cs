@@ -206,6 +206,11 @@ namespace TeamOutliers
                 // That's it, we have the whole line, write it as a new line.
                 sw.WriteLine(checkBoxesLine);
             }//end using streamwriter
+        }
+
+        private void tbAllergies_TextChanged(object sender, EventArgs e)
+        {
+
         }//end savebutton_click
 
         #endregion
