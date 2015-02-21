@@ -33,18 +33,22 @@
          this.medicationListView = new System.Windows.Forms.ListView();
          this.removeMedicationButton = new System.Windows.Forms.Button();
          this.addMedicationButton = new System.Windows.Forms.Button();
-         this.dosageTextBox = new System.Windows.Forms.TextBox();
+         this.medicationDosageTextBox = new System.Windows.Forms.TextBox();
          this.label2 = new System.Windows.Forms.Label();
          this.medicationTextBox = new System.Windows.Forms.TextBox();
          this.label1 = new System.Windows.Forms.Label();
          this.supplementGroup = new System.Windows.Forms.GroupBox();
          this.supplementListView = new System.Windows.Forms.ListView();
-         this.button2 = new System.Windows.Forms.Button();
-         this.button1 = new System.Windows.Forms.Button();
+         this.removeNutritionButton = new System.Windows.Forms.Button();
+         this.addNutritionButton = new System.Windows.Forms.Button();
          this.label28 = new System.Windows.Forms.Label();
          this.supplementTextBox = new System.Windows.Forms.TextBox();
          this.supplementDosage = new System.Windows.Forms.TextBox();
          this.label27 = new System.Windows.Forms.Label();
+         this.medication = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+         this.dosage = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+         this.nutrition = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+         this.nutritionDosage = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
          this.medicationGroup.SuspendLayout();
          this.supplementGroup.SuspendLayout();
          this.SuspendLayout();
@@ -64,7 +68,7 @@
          this.medicationGroup.Controls.Add(this.medicationListView);
          this.medicationGroup.Controls.Add(this.removeMedicationButton);
          this.medicationGroup.Controls.Add(this.addMedicationButton);
-         this.medicationGroup.Controls.Add(this.dosageTextBox);
+         this.medicationGroup.Controls.Add(this.medicationDosageTextBox);
          this.medicationGroup.Controls.Add(this.label2);
          this.medicationGroup.Controls.Add(this.medicationTextBox);
          this.medicationGroup.Controls.Add(this.label1);
@@ -77,11 +81,15 @@
          // 
          // medicationListView
          // 
+         this.medicationListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.medication,
+            this.dosage});
          this.medicationListView.Location = new System.Drawing.Point(19, 32);
          this.medicationListView.Name = "medicationListView";
          this.medicationListView.Size = new System.Drawing.Size(545, 155);
          this.medicationListView.TabIndex = 5;
          this.medicationListView.UseCompatibleStateImageBehavior = false;
+         this.medicationListView.View = System.Windows.Forms.View.Details;
          // 
          // removeMedicationButton
          // 
@@ -91,7 +99,7 @@
          this.removeMedicationButton.TabIndex = 4;
          this.removeMedicationButton.Text = "REMOVE";
          this.removeMedicationButton.UseVisualStyleBackColor = true;
-         this.removeMedicationButton.Click += new System.EventHandler(this.button1_Click);
+         this.removeMedicationButton.Click += new System.EventHandler(this.addRemoveMedicationOrSupplement_Click);
          // 
          // addMedicationButton
          // 
@@ -101,14 +109,14 @@
          this.addMedicationButton.TabIndex = 4;
          this.addMedicationButton.Text = "ADD";
          this.addMedicationButton.UseVisualStyleBackColor = true;
-         this.addMedicationButton.Click += new System.EventHandler(this.button1_Click);
+         this.addMedicationButton.Click += new System.EventHandler(this.addRemoveMedicationOrSupplement_Click);
          // 
-         // dosageTextBox
+         // medicationDosageTextBox
          // 
-         this.dosageTextBox.Location = new System.Drawing.Point(364, 212);
-         this.dosageTextBox.Name = "dosageTextBox";
-         this.dosageTextBox.Size = new System.Drawing.Size(200, 20);
-         this.dosageTextBox.TabIndex = 3;
+         this.medicationDosageTextBox.Location = new System.Drawing.Point(364, 212);
+         this.medicationDosageTextBox.Name = "medicationDosageTextBox";
+         this.medicationDosageTextBox.Size = new System.Drawing.Size(200, 20);
+         this.medicationDosageTextBox.TabIndex = 3;
          // 
          // label2
          // 
@@ -138,8 +146,8 @@
          // supplementGroup
          // 
          this.supplementGroup.Controls.Add(this.supplementListView);
-         this.supplementGroup.Controls.Add(this.button2);
-         this.supplementGroup.Controls.Add(this.button1);
+         this.supplementGroup.Controls.Add(this.removeNutritionButton);
+         this.supplementGroup.Controls.Add(this.addNutritionButton);
          this.supplementGroup.Controls.Add(this.label28);
          this.supplementGroup.Controls.Add(this.supplementTextBox);
          this.supplementGroup.Controls.Add(this.supplementDosage);
@@ -154,31 +162,35 @@
          // 
          // supplementListView
          // 
+         this.supplementListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.nutrition,
+            this.nutritionDosage});
          this.supplementListView.Location = new System.Drawing.Point(19, 44);
          this.supplementListView.Name = "supplementListView";
          this.supplementListView.Size = new System.Drawing.Size(545, 182);
          this.supplementListView.TabIndex = 5;
          this.supplementListView.UseCompatibleStateImageBehavior = false;
+         this.supplementListView.View = System.Windows.Forms.View.Details;
          // 
-         // button2
+         // removeNutritionButton
          // 
-         this.button2.Location = new System.Drawing.Point(117, 294);
-         this.button2.Name = "button2";
-         this.button2.Size = new System.Drawing.Size(75, 23);
-         this.button2.TabIndex = 4;
-         this.button2.Text = "REMOVE";
-         this.button2.UseVisualStyleBackColor = true;
-         this.button2.Click += new System.EventHandler(this.button1_Click);
+         this.removeNutritionButton.Location = new System.Drawing.Point(117, 294);
+         this.removeNutritionButton.Name = "removeNutritionButton";
+         this.removeNutritionButton.Size = new System.Drawing.Size(75, 23);
+         this.removeNutritionButton.TabIndex = 4;
+         this.removeNutritionButton.Text = "REMOVE";
+         this.removeNutritionButton.UseVisualStyleBackColor = true;
+         this.removeNutritionButton.Click += new System.EventHandler(this.addRemoveMedicationOrSupplement_Click);
          // 
-         // button1
+         // addNutritionButton
          // 
-         this.button1.Location = new System.Drawing.Point(19, 294);
-         this.button1.Name = "button1";
-         this.button1.Size = new System.Drawing.Size(75, 23);
-         this.button1.TabIndex = 4;
-         this.button1.Text = "ADD";
-         this.button1.UseVisualStyleBackColor = true;
-         this.button1.Click += new System.EventHandler(this.button1_Click);
+         this.addNutritionButton.Location = new System.Drawing.Point(19, 294);
+         this.addNutritionButton.Name = "addNutritionButton";
+         this.addNutritionButton.Size = new System.Drawing.Size(75, 23);
+         this.addNutritionButton.TabIndex = 4;
+         this.addNutritionButton.Text = "ADD";
+         this.addNutritionButton.UseVisualStyleBackColor = true;
+         this.addNutritionButton.Click += new System.EventHandler(this.addRemoveMedicationOrSupplement_Click);
          // 
          // label28
          // 
@@ -212,6 +224,26 @@
          this.label27.TabIndex = 2;
          this.label27.Text = "Dosage";
          // 
+         // medication
+         // 
+         this.medication.Text = "Medication";
+         this.medication.Width = 273;
+         // 
+         // dosage
+         // 
+         this.dosage.Text = "Dosage";
+         this.dosage.Width = 267;
+         // 
+         // nutrition
+         // 
+         this.nutrition.Text = "S, H, V, OTC";
+         this.nutrition.Width = 273;
+         // 
+         // nutritionDosage
+         // 
+         this.nutritionDosage.Text = "Dosage";
+         this.nutritionDosage.Width = 267;
+         // 
          // Form2
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -236,18 +268,22 @@
         private System.Windows.Forms.GroupBox medicationGroup;
         private System.Windows.Forms.GroupBox supplementGroup;
         private System.Windows.Forms.Button addMedicationButton;
-        private System.Windows.Forms.TextBox dosageTextBox;
+        private System.Windows.Forms.TextBox medicationDosageTextBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox medicationTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button removeMedicationButton;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button removeNutritionButton;
+        private System.Windows.Forms.Button addNutritionButton;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.TextBox supplementTextBox;
         private System.Windows.Forms.TextBox supplementDosage;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.ListView medicationListView;
         private System.Windows.Forms.ListView supplementListView;
+        private System.Windows.Forms.ColumnHeader medication;
+        private System.Windows.Forms.ColumnHeader dosage;
+        private System.Windows.Forms.ColumnHeader nutrition;
+        private System.Windows.Forms.ColumnHeader nutritionDosage;
     }
 }
