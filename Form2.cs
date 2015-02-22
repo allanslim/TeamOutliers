@@ -39,11 +39,11 @@ namespace TeamOutliers
            switch (button.Name)
            {
               case "addMedicationButton":
-                 addMedication(medicationTextBox.Text, medicationDosageTextBox.Text, medicationListView);
+                 addEntryToTheListView(medicationTextBox.Text, medicationDosageTextBox.Text, medicationListView);
                  break;
               
               case "addNutritionButton":
-                 addMedication(supplementTextBox.Text, supplementDosage.Text, supplementListView);
+                 addEntryToTheListView(supplementTextBox.Text, supplementDosage.Text, supplementListView);
                  break;
          
               case "removeMedicationButton":
@@ -64,7 +64,7 @@ namespace TeamOutliers
 
         }
 
-        private void addMedication(String medicine, String dosage, ListView listView)
+        private void addEntryToTheListView(String medicine, String dosage, ListView listView)
         {
            if (medicine != "" && dosage != "")
            {
