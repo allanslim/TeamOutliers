@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 
 namespace TeamOutliers
 {
@@ -16,19 +17,32 @@ namespace TeamOutliers
 
        private Form previousForm;
        private Form nextForm;
-    
-       public Form2(Form form)
+       private StreamWriter streamWriter;
+
+       public Form2(Form form, StreamWriter streamWriter)
         {
            previousForm = form;
-           nextForm = new Form3(this);
+           this.streamWriter = streamWriter;
+           nextForm = new Form3(this, streamWriter);
            InitializeComponent();
 
         }
 
         private void nextButton_Click(object sender, EventArgs e)
         {
+           saveData();
            this.Hide();
            nextForm.Show();
+        }
+
+        private void saveData()
+        {
+           streamWriter.WriteLine("PRESCRIPTION MEDICATION:");
+           medicationListView.Items.Cast<ListViewItem>().ToList().ForEach(medication => streamWriter.WriteLine(medication.Text));
+
+           streamWriter.WriteLine("");
+           streamWriter.WriteLine("SUPPLEMENTS, HERBS, OVER THE COUNTER and VITAMINS:");
+           supplementListView.Items.Cast<ListViewItem>().ToList().ForEach(medication => streamWriter.WriteLine(medication.Text));
         }
 
         private void addRemoveMedicationOrSupplement_Click(object sender, EventArgs e)

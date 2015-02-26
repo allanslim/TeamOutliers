@@ -111,7 +111,6 @@
          this.cbCancer = new System.Windows.Forms.CheckBox();
          this.cbDiabetis = new System.Windows.Forms.CheckBox();
          this.cbStroke = new System.Windows.Forms.CheckBox();
-         this.saveButton = new System.Windows.Forms.Button();
          this.pnlMedicalHistory.SuspendLayout();
          this.SuspendLayout();
          // 
@@ -201,7 +200,7 @@
          // 
          // cancelButton
          // 
-         this.cancelButton.Location = new System.Drawing.Point(451, 627);
+         this.cancelButton.Location = new System.Drawing.Point(12, 627);
          this.cancelButton.Name = "cancelButton";
          this.cancelButton.Size = new System.Drawing.Size(75, 23);
          this.cancelButton.TabIndex = 37;
@@ -924,22 +923,11 @@
          this.cbStroke.Tag = "Stroke";
          this.cbStroke.UseVisualStyleBackColor = true;
          // 
-         // saveButton
-         // 
-         this.saveButton.Location = new System.Drawing.Point(542, 627);
-         this.saveButton.Name = "saveButton";
-         this.saveButton.Size = new System.Drawing.Size(75, 23);
-         this.saveButton.TabIndex = 41;
-         this.saveButton.Text = "Save";
-         this.saveButton.UseVisualStyleBackColor = true;
-         this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
-         // 
          // Form1
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(715, 657);
-         this.Controls.Add(this.saveButton);
          this.Controls.Add(this.pnlMedicalHistory);
          this.Controls.Add(this.nextButton);
          this.Controls.Add(this.cancelButton);
@@ -998,7 +986,6 @@
         private System.Windows.Forms.CheckBox cbDiabetis;
         private System.Windows.Forms.CheckBox cbStroke;
         private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.CheckBox cbGrandmotherFather;

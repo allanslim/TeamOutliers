@@ -7,23 +7,28 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 
 namespace TeamOutliers
 {
     public partial class Form3 : Form
     {
         private Form previousForm;
+        private StreamWriter streamWriter;
        // Form1 form1 = new Form1();
 
-        public Form3(Form form)
+        public Form3(Form form, StreamWriter streamWriter)
         {
+           this.streamWriter = streamWriter;
             previousForm = form;
             InitializeComponent();
         }
 
         private void submitButton_Click(object sender, EventArgs e)
         {
+            //David - you need to display all the information here in  abig MessageDialog;
             MessageBox.Show("Thanks for entering your information!");
+            this.streamWriter.Close();
             this.Close();
         }
 
