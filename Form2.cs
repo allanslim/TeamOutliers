@@ -37,6 +37,7 @@ namespace TeamOutliers
 
         private void saveData()
         {
+           streamWriter.WriteLine("");
            streamWriter.WriteLine("PRESCRIPTION MEDICATION:");
            medicationListView.Items.Cast<ListViewItem>().ToList().ForEach(medication => streamWriter.WriteLine(medication.Text));
 
@@ -115,6 +116,10 @@ namespace TeamOutliers
         {
            previousForm.Show();
            this.Hide();
+        }
+
+        public Form getPreviousForm(){
+            return previousForm;
         }
 
         private void Form2_Load(object sender, EventArgs e)

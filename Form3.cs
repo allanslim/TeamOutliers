@@ -13,23 +13,56 @@ namespace TeamOutliers
 {
     public partial class Form3 : Form
     {
-        private Form previousForm;
+        private Form2 previousForm;
         private StreamWriter streamWriter;
-       // Form1 form1 = new Form1();
 
-        public Form3(Form form, StreamWriter streamWriter)
+        public Form3(Form2 form, StreamWriter streamWriter)
         {
            this.streamWriter = streamWriter;
             previousForm = form;
             InitializeComponent();
         }
 
+        public void saveData()
+        {
+            streamWriter.WriteLine("");
+            streamWriter.WriteLine("ACCIDENTS:");
+            List<ListViewItem> dataHistory = historyListView.Items.Cast<ListViewItem>().ToList();
+
+            foreach (ListViewItem item in dataHistory)
+            {
+                String value = "";
+                var subitems = item.SubItems;
+                for (int i = 0; i < subitems.Count; i++)
+                {
+                    value += subitems[i].Text+" ";
+                }
+                streamWriter.WriteLine(value);
+            }
+
+            streamWriter.WriteLine("");
+            streamWriter.WriteLine("SURGERIES AND HOSPITALIZATION:");
+            List<ListViewItem> dataHospital = hospitalListView.Items.Cast<ListViewItem>().ToList();
+
+            foreach (ListViewItem item in dataHospital)
+            {
+                String value = "";
+                var subitems = item.SubItems;
+                for (int i = 0; i < subitems.Count; i++)
+                {
+                    value += subitems[i].Text + " ";
+                }
+                streamWriter.WriteLine(value);
+            }
+       
+        }
+
         private void submitButton_Click(object sender, EventArgs e)
         {
-            //David - you need to display all the information here in  abig MessageDialog;
             MessageBox.Show("Thanks for entering your information!");
+            saveData();
             this.streamWriter.Close();
-            this.Close();
+            this.Dispose();
         }
 
         private void historyListView_Click(object sender, EventArgs e)
@@ -67,10 +100,8 @@ namespace TeamOutliers
             {
 
                 string[] row = { year, type, pain };
-
-                //if (!medicationOrSupplementExistInTheList(listView, medicine))
+                
                 ListViewItem listViewItem = new ListViewItem(row);
-
                 listView.Items.Add(listViewItem);
 
 
@@ -84,18 +115,11 @@ namespace TeamOutliers
 
                 string[] row = { year, type, pain };
 
-                //if (!medicationOrSupplementExistInTheList(listView, medicine))
                 ListViewItem listViewItem = new ListViewItem(row);
-
                 listView.Items.Add(listViewItem);
 
 
             }
-        }
-
-        private void addHistoryButton_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void label7_Click(object sender, EventArgs e)
@@ -111,14 +135,20 @@ namespace TeamOutliers
 
         private void returnToFirstPage()
         {
-            previousForm.Show();
+            previousForm.getPreviousForm().Show();
             this.Hide();
         }
 
         private void page1_Click(object sender, EventArgs e)
         {
-            // do something to get back to page 1.
+            returnToFirstPage();
         }
+
+        private void previousButton_Click(object sender, EventArgs e)
+        {
+            returnToPreviousPage();
+        }
+
 
     }
 }
