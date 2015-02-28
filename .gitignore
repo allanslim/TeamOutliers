@@ -5,6 +5,7 @@
 *.suo
 *.user
 *.sln.docstates
+*_CustomerRecord.txt
 
 # Build results
 [Dd]ebug/

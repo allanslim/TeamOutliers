@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace TeamOutliers
 {
@@ -36,7 +37,8 @@ namespace TeamOutliers
         {
            try
            {
-              this.streamWriter = new StreamWriter(Application.StartupPath + "\\" + RandomString(10) + "_CustomerRecord.txt");
+              this.streamWriter = new StreamWriter(Application.StartupPath + "\\" + 
+                  RandomString(10) + "_CustomerRecord.txt");
            }
            catch (Exception ex)
            {
@@ -72,9 +74,11 @@ namespace TeamOutliers
         {
             if (tbDateOfBirth.Text.Length >= 1)
             {
-                    dateOfBirth = tbDateOfBirth.Text;
-                    dateOfBirth = string.Format("{0:ddMMMyyyy}",
-                        dateOfBirth);
+  
+                  dateOfBirth = tbDateOfBirth.Text;
+                  dateOfBirth = string.Format("{0:DDMMYYYY}", dateOfBirth);
+  
+
             }
         }
 
@@ -85,7 +89,7 @@ namespace TeamOutliers
                 try
                 {
                     socialSecurityNumber = tbSocialSecurityNumber.Text;
-                    socialSecurityNumber = string.Format("{0:xxx-xx-xxxx}",
+                    socialSecurityNumber = string.Format("{0:XXX-XX-XXXX}",
                         socialSecurityNumber);
                 }//end try
                 catch
@@ -173,7 +177,7 @@ namespace TeamOutliers
 
            //Write age and cause of mother death to file
            if (tbMotherAge.Text.Length > 0 && tbMotherCause.Text.Length > 0)
-              streamWriter.Write("Mothger Deceased: " + tbMotherAge.Text + ", " + tbMotherCause.Text);
+              streamWriter.Write("Mother Deceased: " + tbMotherAge.Text + ", " + tbMotherCause.Text);
            streamWriter.WriteLine(); // <--- this is new, means: insert line break
 
            //Write age and cause of father death to file
@@ -248,6 +252,36 @@ namespace TeamOutliers
         private void tbAllergies_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void tbDateOfBirth_Leave(object sender, EventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            bool isOK = true;
+
+            switch (tb.Name) { 
+                case("tbDateOfBirth"):
+                     isOK = Regex.IsMatch(tbDateOfBirth.Text, @"[0-3][0-9][0-1][0-9][0-9][0-9][0-9][0-9]");
+                  if (!isOK)
+                  {
+                       tbDateOfBirth.Text = "";
+                     MessageBox.Show("The Date of Birth must be entered in the format as DDMMYYYY.", "DOB ERROR",
+                           MessageBoxButtons.OK, MessageBoxIcon.Error);
+                   }
+               break;
+
+                // source for this solution: http://stackoverflow.com/questions/7067874/regular-expression-for-ssn
+                case ("tbSocialSecurityNumber"):
+               isOK = Regex.IsMatch(tbSocialSecurityNumber.Text, @"^\d{3}\-?\d{2}\-?\d{4}$");
+                  if (!isOK)
+                  {
+                      tbSocialSecurityNumber.Text = "";
+                     MessageBox.Show("The Social Security Number must be entered in the format as XXX-XX-XXXX.", 
+                         "DOB ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                   }
+               break;
+            } // end switch
+           
         }//end savebutton_click
 
         
