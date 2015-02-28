@@ -240,7 +240,7 @@ namespace TeamOutliers
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+           Application.Exit();
         }
         #endregion
 
