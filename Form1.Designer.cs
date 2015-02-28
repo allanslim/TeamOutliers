@@ -170,6 +170,7 @@
             this.tbDateOfBirth.TabIndex = 5;
             this.tbDateOfBirth.Text = "DDMMYYYY";
             this.tbDateOfBirth.TextChanged += new System.EventHandler(this.tbDateOfBirth_TextChanged);
+            this.tbDateOfBirth.Leave += new System.EventHandler(this.tbDateOfBirth_Leave);
             // 
             // label5
             // 
@@ -197,6 +198,7 @@
             this.tbSocialSecurityNumber.TabIndex = 8;
             this.tbSocialSecurityNumber.Text = "xxx-xx-xxxx";
             this.tbSocialSecurityNumber.TextChanged += new System.EventHandler(this.tbSocialSecurityNumber_TextChanged);
+            this.tbSocialSecurityNumber.Leave += new System.EventHandler(this.tbDateOfBirth_Leave);
             // 
             // cancelButton
             // 

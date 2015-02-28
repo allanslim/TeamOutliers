@@ -88,7 +88,11 @@ namespace TeamOutliers
             {
 
                 case "addHistoryButton":
-                    addEntryToTheListView(historyYearTextBox.Text, historyTypeTextBox.Text, historyPainTextBox.Text, historyListView);
+                    addEntryToTheListView(historyYearTextBox.Text, 
+                        historyTypeTextBox.Text, historyPainTextBox.Text, historyListView);
+                    historyYearTextBox.Text = "";
+                    historyTypeTextBox.Text = "";
+                    historyPainTextBox.Text = "";
                     break;
                 case "removeHistoryButton":
                     historyListView.Items.Cast<ListViewItem>().
@@ -97,7 +101,11 @@ namespace TeamOutliers
                     ForEach(T => historyListView.Items.RemoveAt(T));
                     break;
                 case "hospitalAddButton":
-                    addEntryToTheHospitalListView(hospitalYearTextBox.Text, hospitalReasonTextBox.Text, hospitalPainTextBox.Text, hospitalListView);
+                    addEntryToTheHospitalListView(hospitalYearTextBox.Text, 
+                        hospitalReasonTextBox.Text, hospitalPainTextBox.Text, hospitalListView);
+                    hospitalYearTextBox.Text = "";
+                    hospitalPainTextBox.Text = "";
+                    hospitalReasonTextBox.Text = "";
                     break;
 
                 case "hospitalRemoveButton":

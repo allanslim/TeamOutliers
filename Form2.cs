@@ -55,10 +55,14 @@ namespace TeamOutliers
            {
               case "addMedicationButton":
                  addEntryToTheListView(medicationTextBox.Text, medicationDosageTextBox.Text, medicationListView);
+                 medicationDosageTextBox.Text = "";
+                 medicationTextBox.Text = "";
                  break;
               
               case "addNutritionButton":
                  addEntryToTheListView(supplementTextBox.Text, supplementDosage.Text, supplementListView);
+                 supplementTextBox.Text = "";
+                 supplementDosage.Text = "";
                  break;
          
               case "removeMedicationButton":
