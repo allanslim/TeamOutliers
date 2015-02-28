@@ -72,9 +72,11 @@ namespace TeamOutliers
         {
             if (tbDateOfBirth.Text.Length >= 1)
             {
-                    dateOfBirth = tbDateOfBirth.Text;
-                    dateOfBirth = string.Format("{0:ddMMMyyyy}",
-                        dateOfBirth);
+  
+                  dateOfBirth = tbDateOfBirth.Text;
+                  dateOfBirth = string.Format("{0:DDMMYY}", dateOfBirth);
+  
+
             }
         }
 
@@ -85,7 +87,7 @@ namespace TeamOutliers
                 try
                 {
                     socialSecurityNumber = tbSocialSecurityNumber.Text;
-                    socialSecurityNumber = string.Format("{0:xxx-xx-xxxx}",
+                    socialSecurityNumber = string.Format("{0:XXX-XX-XXXX}",
                         socialSecurityNumber);
                 }//end try
                 catch
@@ -173,7 +175,7 @@ namespace TeamOutliers
 
            //Write age and cause of mother death to file
            if (tbMotherAge.Text.Length > 0 && tbMotherCause.Text.Length > 0)
-              streamWriter.Write("Mothger Deceased: " + tbMotherAge.Text + ", " + tbMotherCause.Text);
+              streamWriter.Write("Mother Deceased: " + tbMotherAge.Text + ", " + tbMotherCause.Text);
            streamWriter.WriteLine(); // <--- this is new, means: insert line break
 
            //Write age and cause of father death to file

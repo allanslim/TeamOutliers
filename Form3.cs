@@ -64,10 +64,19 @@ namespace TeamOutliers
          
             this.streamWriter.Close();
 
-            this.Hide(); 
+            this.Hide();
 
-            Form1 form1 = new Form1();
-            form1.Show();
+            // I got tired of it always making a new one, this way it will ask if you want a new form
+            DialogResult result = MessageBox.Show("Would you like to start a new form?", 
+                "New Form?", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
+            {
+                Form1 form1 = new Form1();
+                form1.Show();
+            }
+            else
+                Application.Exit(); // totally quits out
             
         }
 
