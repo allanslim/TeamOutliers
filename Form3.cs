@@ -61,8 +61,14 @@ namespace TeamOutliers
         {
             MessageBox.Show("Thanks for entering your information!");
             saveData();
+         
             this.streamWriter.Close();
-            this.Dispose();
+
+            this.Hide(); 
+
+            Form1 form1 = new Form1();
+            form1.Show();
+            
         }
 
         private void historyListView_Click(object sender, EventArgs e)

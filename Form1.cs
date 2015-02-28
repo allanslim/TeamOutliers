@@ -12,6 +12,12 @@ namespace TeamOutliers
 {
     public partial class Form1 : Form
     {
+
+
+       private readonly Random _rng = new Random();
+       private const string _chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+
         string fullName;
         string dateOfBirth;
         string socialSecurityNumber;
@@ -30,7 +36,7 @@ namespace TeamOutliers
         {
            try
            {
-              this.streamWriter = new StreamWriter(Application.StartupPath + "\\_CustomerRecord.txt");
+              this.streamWriter = new StreamWriter(Application.StartupPath + "\\" + RandomString(10) + "_CustomerRecord.txt");
            }
            catch (Exception ex)
            {
@@ -39,6 +45,19 @@ namespace TeamOutliers
            }
 
         }
+
+
+        private string RandomString(int size)
+        {
+           char[] buffer = new char[size];
+
+           for (int i = 0; i < size; i++)
+           {
+              buffer[i] = _chars[_rng.Next(_chars.Length)];
+           }
+           return new string(buffer);
+        }
+
 
         #region fullName, DOB, SSN
         private void tbFullName_TextChanged(object sender, EventArgs e)
